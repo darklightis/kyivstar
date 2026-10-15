@@ -1,146 +1,175 @@
+<!DOCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Адреси: дах, ключі, драбина</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Адреси: дах, ключ, драбина</title>
 <style>
-:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
---bg:#f4f6fa;--card:#fff;--text:#17202e;--muted:#667085;--line:#dde2ea;--accent:#1565d8;--accent-t:#fff;--warn:#c2410c;--warn-bg:#fff1e6;--ok:#15803d;--ok-bg:#e8f7ee}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141b;--card:#1a212c;--text:#e8edf5;--muted:#93a0b4;--line:#2b3442;--accent:#5a9bff;--accent-t:#0b1220;--warn:#fdba74;--warn-bg:#3a2415;--ok:#86efac;--ok-bg:#14301f}}
-:root[data-theme="dark"]{--bg:#10141b;--card:#1a212c;--text:#e8edf5;--muted:#93a0b4;--line:#2b3442;--accent:#5a9bff;--accent-t:#0b1220;--warn:#fdba74;--warn-bg:#3a2415;--ok:#86efac;--ok-bg:#14301f}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#f3f4f7;--card:#fff;--ink:#1a1d29;--mute:#667085;--line:#dfe3ea;--acc:#4527d8;--acc-ink:#fff;--warn:#b54708;--warn-bg:#fff1e0;--ok:#0b7a53;--ok-bg:#dff6ec}
+@media(prefers-color-scheme:dark){:root{--bg:#12141c;--card:#1c1f2b;--ink:#eef0f6;--mute:#98a0b3;--line:#2c3040;--acc:#8b78ff;--acc-ink:#12141c;--warn:#ffb166;--warn-bg:#3a2a16;--ok:#5fd6a5;--ok-bg:#15332a}}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:12px 14px 8px;z-index:5;border-bottom:1px solid var(--line)}
-h1{font-size:18px;margin:0 0 8px}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-input,textarea,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);font:inherit}
-textarea{min-height:64px;resize:vertical}
-button{padding:10px 14px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-t);font:inherit;font-weight:600;cursor:pointer}
-button.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
-button.danger{background:transparent;color:var(--warn);border:1px solid var(--line)}
-.search{flex:1;min-width:160px}
-main{padding:10px 10px 80px;max-width:1200px;margin:0 auto}
-#list{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
-.empty{grid-column:1/-1}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;flex-direction:column;min-height:180px;min-width:0}
-.addr{font-weight:700;font-size:15px;overflow-wrap:anywhere}
-.sub{color:var(--muted);font-size:14px}
-.item{margin-top:6px;font-size:14px;line-height:1.3;overflow-wrap:anywhere}
-.item b{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:13px;font-weight:600;margin-top:6px}
-.badge.warn{background:var(--warn-bg);color:var(--warn)}
-.badge.ok{background:var(--ok-bg);color:var(--ok)}
-.actions{display:flex;gap:6px;margin-top:auto;padding-top:8px}
-.actions button{flex:1;padding:6px 8px;font-size:13px}
-.empty,.note{color:var(--muted);text-align:center;padding:24px 8px;font-size:14px}
-dialog{border:1px solid var(--line);border-radius:16px;background:var(--bg);color:var(--text);width:min(560px,94vw);padding:16px;max-height:92vh;overflow:auto}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:16px 14px 90px}
+h1{font-size:1.35rem;margin:6px 0 14px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+input,textarea,button{font:inherit;color:inherit}
+.search{flex:1 1 100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.tab{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);cursor:pointer}
+.tab[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px}
+.item h2{font-size:1.05rem;margin:0 0 8px}
+.row{display:flex;gap:8px;margin:3px 0}
+.row b{min-width:92px;color:var(--mute);font-weight:500}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.85rem}
+.badge.yes{background:var(--warn-bg);color:var(--warn)}.badge.no{background:var(--ok-bg);color:var(--ok)}
+.meta{margin-top:8px;font-size:.82rem;color:var(--mute);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.link{background:none;border:0;color:var(--acc);cursor:pointer;padding:6px 0}
+.fab{position:fixed;right:16px;bottom:16px;padding:14px 20px;border:0;border-radius:999px;background:var(--acc);color:var(--acc-ink);font-weight:600;box-shadow:0 4px 14px rgba(0,0,0,.25);cursor:pointer}
+dialog{border:0;border-radius:14px;padding:18px;width:min(520px,94vw);background:var(--card);color:var(--ink)}
 dialog::backdrop{background:rgba(0,0,0,.5)}
-label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px}
-.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));border-radius:99px;padding:14px 20px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
-.chk{display:flex;align-items:center;gap:10px;margin-top:12px}
-.chk input{width:22px;height:22px}
+label{display:block;margin:12px 0 4px;font-size:.92rem}
+.f{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.chk{display:flex;gap:8px;align-items:center;margin-top:14px}.chk input{width:20px;height:20px}
+.btns{display:flex;gap:8px;margin-top:18px}
+.btns button{flex:1;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer}
+.btns .ok{background:var(--acc);color:var(--acc-ink);border-color:var(--acc);font-weight:600}
+.note{padding:12px;border-radius:10px;background:var(--warn-bg);color:var(--warn);margin-bottom:12px}
+.empty{text-align:center;color:var(--mute);padding:36px 0}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 </style>
 </head>
 <body>
-<header>
-  <h1>🏢 Адреси: дах · ключ · драбина</h1>
-  <div class="row">
-    <input class="search" id="q" type="search" placeholder="Пошук за адресою, вулицею…">
-    <select id="f" style="width:auto"><option value="">Усі</option><option value="ladder">Потрібна драбина</option><option value="noladder">Без драбини</option></select>
-  </div>
-</header>
 <main>
-  <div id="status" class="note"></div>
+  <h1>🏢 Адреси: дах, ключ, драбина</h1>
+  <div id="note" class="note" hidden></div>
+  <div class="bar">
+    <input id="q" class="search" type="search" placeholder="Пошук за адресою або коментарем" aria-label="Пошук">
+    <button class="tab" data-f="all" aria-pressed="true">Усі</button>
+    <button class="tab" data-f="yes" aria-pressed="false">Потрібна драбина</button>
+    <button class="tab" data-f="no" aria-pressed="false">Без драбини</button>
+  </div>
   <div id="list"></div>
 </main>
 <button class="fab" id="add">+ Додати адресу</button>
 
 <dialog id="dlg">
-  <h2 id="dt" style="margin:0 0 4px;font-size:18px">Адреса</h2>
-  <label>Адреса *</label><input id="a" placeholder="вул. Шевченка 12, під'їзд 2">
-  <label>Де вихід на дах</label><textarea id="r" placeholder="Напр.: 9 поверх, двері за ліфтом, люк"></textarea>
-  <label>Де взяти ключ</label><textarea id="k" placeholder="Напр.: кв. 5, пані Оксана, тел. … / ОСББ / охорона"></textarea>
-  <div class="chk"><input type="checkbox" id="l"><span>Потрібна драбина</span></div>
-  <label>Де драбина / коментар</label><textarea id="n" placeholder="Напр.: люк високо, потрібна драбина 3 м"></textarea>
-  <div class="row" style="margin-top:14px">
-    <button id="save">Зберегти</button>
-    <button class="ghost" id="cancel">Скасувати</button>
-  </div>
-  <div id="err" class="sub" style="color:var(--warn);margin-top:8px"></div>
+  <form id="form" method="dialog">
+    <h2 id="dtitle" style="margin:0 0 4px">Нова адреса</h2>
+    <label for="address">Адреса *</label>
+    <input class="f" id="address" required maxlength="150" placeholder="вул. Шевченка 12, під'їзд 2">
+    <label for="roof">Де вихід на дах</label>
+    <input class="f" id="roof" maxlength="300">
+    <label for="key">Де взяти ключ</label>
+    <input class="f" id="key" maxlength="300">
+    <div class="chk"><input type="checkbox" id="ladder"><label for="ladder" style="margin:0">Потрібна драбина</label></div>
+    <label for="note2">Де драбина / коментар</label>
+    <textarea class="f" id="note2" rows="3" maxlength="500"></textarea>
+    <label for="author">Ваше ім'я (щоб колеги знали, хто додав)</label>
+    <input class="f" id="author" maxlength="40">
+    <div class="btns">
+      <button type="button" id="cancel">Скасувати</button>
+      <button type="submit" class="ok">Зберегти</button>
+    </div>
+  </form>
 </dialog>
 
-<script>
-const $ = id => document.getElementById(id);
-let rows = [], editId = null, col = null, uid = '', canWrite = true, local = false;
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, updateDoc, doc, onSnapshot, query, orderBy, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-function render(){
-  const q = $('q').value.trim().toLowerCase(), f = $('f').value;
-  const list = rows.filter(r => {
-    if (f==='ladder' && !r.ladder) return false;
-    if (f==='noladder' && r.ladder) return false;
-    return !q || [r.address,r.roof,r.key,r.note].join(' ').toLowerCase().includes(q);
-  }).sort((a,b)=>(a.address||'').localeCompare(b.address||'','uk'));
-  const el = $('list'); el.textContent='';
-  if (!list.length){ const d=document.createElement('div'); d.className='empty'; d.textContent=rows.length?'Нічого не знайдено':'Поки немає адрес. Натисніть «+ Додати адресу».'; el.append(d); return; }
-  for (const r of list){
-    const c=document.createElement('div'); c.className='card';
-    const add=(cls,txt)=>{const d=document.createElement('div');d.className=cls;d.textContent=txt;c.append(d);return d;};
-    add('addr',r.address);
-    const b=document.createElement('span'); b.className='badge '+(r.ladder?'warn':'ok'); b.textContent=r.ladder?'🪜 Потрібна драбина':'Драбина не потрібна'; c.append(b);
-    for (const [lab,val] of [['Вихід на дах',r.roof],['Ключ',r.key],['Коментар',r.note]]){
-      if(!val) continue; const it=document.createElement('div'); it.className='item';
-      const bb=document.createElement('b'); bb.textContent=lab; const s=document.createElement('span'); s.textContent=val; it.append(bb,s); c.append(it);
-    }
-    if (r.updated) add('sub','Оновлено: '+new Date(r.updated).toLocaleDateString('uk-UA')).style.marginTop='8px';
-    const ac=document.createElement('div'); ac.className='actions';
-    const e=document.createElement('button'); e.className='ghost'; e.textContent='Редагувати'; e.onclick=()=>openDlg(r);
-    const x=document.createElement('button'); x.className='danger'; x.textContent='Видалити'; x.onclick=()=>del(r);
-    ac.append(e,x); c.append(ac); el.append(c);
+/* ВСТАВТЕ СВІЙ firebaseConfig З КОНСОЛІ FIREBASE */
+const firebaseConfig = {
+  apiKey: "ВАШ_API_KEY",
+  authDomain: "ВАШ_ПРОЄКТ.firebaseapp.com",
+  projectId: "ВАШ_ПРОЄКТ",
+  appId: "ВАШ_APP_ID"
+};
+
+const $ = s => document.querySelector(s);
+const note = $("#note"), listEl = $("#list"), dlg = $("#dlg");
+let items = [], filter = "all", editId = null, db = null;
+
+const configured = !firebaseConfig.apiKey.startsWith("ВАШ");
+if (!configured) {
+  note.hidden = false;
+  note.textContent = "База не підключена: вставте firebaseConfig у index.html (див. інструкцію).";
+} else {
+  db = getFirestore(initializeApp(firebaseConfig));
+  onSnapshot(query(collection(db, "addresses"), orderBy("createdAt", "desc")),
+    snap => { items = snap.docs.map(d => ({ id: d.id, ...d.data() })); render(); },
+    err => { note.hidden = false; note.textContent = "Не вдалося завантажити дані: " + err.message; });
+}
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = t => t?.toDate ? t.toDate().toLocaleDateString("uk-UA") : "щойно";
+
+function render() {
+  const s = $("#q").value.trim().toLowerCase();
+  const shown = items.filter(i =>
+    (filter === "all" || (filter === "yes") === !!i.ladder) &&
+    (!s || [i.address, i.roof, i.key, i.note].join(" ").toLowerCase().includes(s)));
+  if (!shown.length) {
+    listEl.innerHTML = `<div class="empty">${items.length ? "Нічого не знайдено." : "Адрес ще немає. Додайте першу кнопкою внизу."}</div>`;
+    return;
   }
+  listEl.innerHTML = shown.map(i => `
+    <article class="item">
+      <h2>${esc(i.address)}</h2>
+      ${i.roof ? `<div class="row"><b>Дах</b><span>${esc(i.roof)}</span></div>` : ""}
+      ${i.key ? `<div class="row"><b>Ключ</b><span>${esc(i.key)}</span></div>` : ""}
+      <div class="row"><b>Драбина</b><span><span class="badge ${i.ladder ? "yes" : "no"}">${i.ladder ? "потрібна" : "не потрібна"}</span></span></div>
+      ${i.note ? `<div class="row"><b>Коментар</b><span>${esc(i.note)}</span></div>` : ""}
+      <div class="meta"><span>${esc(i.author || "хтось із колег")} · ${fmt(i.createdAt)}</span>
+      <button class="link" data-edit="${i.id}">Змінити</button></div>
+    </article>`).join("");
 }
-function openDlg(r){
-  editId = r?r.id:null; $('dt').textContent = r?'Редагувати адресу':'Нова адреса'; $('err').textContent='';
-  $('a').value=r?.address||''; $('r').value=r?.roof||''; $('k').value=r?.key||''; $('l').checked=!!r?.ladder; $('n').value=r?.note||'';
-  $('dlg').showModal();
-}
-async function save(){
-  const data={address:$('a').value.trim(),roof:$('r').value.trim(),key:$('k').value.trim(),ladder:$('l').checked,note:$('n').value.trim(),updated:Date.now(),by:uid};
-  if(!data.address){ $('err').textContent='Вкажіть адресу.'; return; }
-  try{
-    if (local){
-      if(editId){ rows=rows.map(r=>r.id===editId?{...data,id:editId}:r); } else rows.push({...data,id:'l'+Date.now()});
-      try{localStorage.setItem('addr',JSON.stringify(rows));}catch(e){}
-      render();
-    } else if (editId) await col.doc(editId).set(data); else await col.add(data);
-    $('dlg').close();
-  }catch(e){ $('err').textContent='Не вдалося зберегти (немає прав запису або помилка мережі).'; }
-}
-async function del(r){
-  if(!confirm('Видалити «'+r.address+'»?')) return;
-  try{
-    if(local){ rows=rows.filter(x=>x.id!==r.id); try{localStorage.setItem('addr',JSON.stringify(rows));}catch(e){} render(); }
-    else await col.doc(r.id).delete();
-  }catch(e){ alert('Не вдалося видалити.'); }
-}
-$('add').onclick=()=>openDlg(null); $('save').onclick=save; $('cancel').onclick=()=>$('dlg').close();
-$('q').oninput=render; $('f').onchange=render;
 
-(async function init(){
+document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
+  filter = b.dataset.f;
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-pressed", x === b));
   render();
-  let db=null, user=null;
-  try{ db=await claude.use('db'); user=await claude.use('user'); }catch(e){}
-  if(user){ try{ uid=await user.id(); canWrite = (user.can && user.can('data.write'))!==false; }catch(e){} }
-  if(!db){
-    local=true; $('status').textContent='⚠️ Спільна база недоступна — дані зберігаються лише на цьому пристрої.';
-    try{ rows=JSON.parse(localStorage.getItem('addr')||'[]'); }catch(e){ rows=[]; }
-    render(); return;
-  }
-  if(!canWrite){ $('add').style.display='none'; $('status').textContent='Режим перегляду: додавати адреси можуть учасники з правом запису.'; }
-  col=db.collection('addresses');
-  col.onSnapshot(s=>{ rows=s.docs.map(d=>({...d.data(),id:d.id})); render(); },
-    ()=>{ $('status').textContent='Не вдалося завантажити дані. Увійдіть в акаунт і оновіть сторінку.'; });
-})();
+});
+$("#q").oninput = render;
+
+function openForm(item) {
+  editId = item?.id ?? null;
+  $("#dtitle").textContent = item ? "Змінити адресу" : "Нова адреса";
+  $("#address").value = item?.address ?? "";
+  $("#roof").value = item?.roof ?? "";
+  $("#key").value = item?.key ?? "";
+  $("#ladder").checked = !!item?.ladder;
+  $("#note2").value = item?.note ?? "";
+  $("#author").value = item?.author ?? localStorage.getItem("author") ?? "";
+  dlg.showModal();
+}
+$("#add").onclick = () => openForm();
+$("#cancel").onclick = () => dlg.close();
+listEl.onclick = e => {
+  const id = e.target.dataset.edit;
+  if (id) openForm(items.find(i => i.id === id));
+};
+
+$("#form").onsubmit = async e => {
+  e.preventDefault();
+  if (!db) { alert("Спочатку підключіть Firebase (firebaseConfig)."); return; }
+  const data = {
+    address: $("#address").value.trim(),
+    roof: $("#roof").value.trim(),
+    key: $("#key").value.trim(),
+    ladder: $("#ladder").checked,
+    note: $("#note2").value.trim(),
+    author: $("#author").value.trim()
+  };
+  if (!data.address) return;
+  localStorage.setItem("author", data.author);
+  try {
+    if (editId) await updateDoc(doc(db, "addresses", editId), { ...data, updatedAt: serverTimestamp() });
+    else await addDoc(collection(db, "addresses"), { ...data, createdAt: serverTimestamp() });
+    dlg.close();
+  } catch (err) { alert("Не збереглося: " + err.message); }
+};
+render();
 </script>
 </body>
 </html>
